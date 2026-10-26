@@ -378,6 +378,15 @@ a.carte:hover h3 { color: var(--orange-texte); }
   color: var(--attenue);
 }
 .document li + li { margin-top: 0.3rem; }
+.document .etudes-en-avant {
+  margin: 2.5rem 0;
+  padding: 1.5rem 0 0.5rem;
+  border-top: 3px solid var(--orange);
+}
+.document .etudes-en-avant h2 { margin-top: 0; }
+.document .etudes-en-avant .cartes { grid-template-columns: repeat(auto-fit, minmax(17rem, 1fr)); }
+.document .etudes-en-avant .carte h3 { margin: 0 0 0.4rem; font-size: 1.15rem; }
+.document .etudes-en-avant .toutes { margin-top: 1.5rem; font-weight: 500; }
 
 /* ===== Pied de page commun, comme celui de l'application ===== */
 
