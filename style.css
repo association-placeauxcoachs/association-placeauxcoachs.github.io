@@ -46,8 +46,9 @@
   color-scheme: light dark;
 }
 
+/* Nuit : choisie dans le pied de page (data-theme), ou suivie de l'appareil en Auto. */
 @media (prefers-color-scheme: dark) {
-  :root {
+  :root:not([data-theme="light"]) {
     --papier: #15111C;
     --papier-2: #211B2B;
     --surface: #1E1926;
@@ -59,6 +60,19 @@
     --violet: #9B82FF;
   }
 }
+:root[data-theme="dark"] {
+  --papier: #15111C;
+  --papier-2: #211B2B;
+  --surface: #1E1926;
+  --encre: #F2EBDE;
+  --attenue: #A69DB1;
+  --filet: rgb(242 235 222 / 0.13);
+  --filet-fort: rgb(242 235 222 / 0.30);
+  --orange-texte: #F58A5C;
+  --violet: #9B82FF;
+  color-scheme: dark;
+}
+:root[data-theme="light"] { color-scheme: light; }
 
 * { box-sizing: border-box; }
 
@@ -294,6 +308,7 @@ a.carte:hover h3 { color: var(--orange-texte); }
 }
 .liens-fleches a span { color: var(--attenue); font-weight: 400; font-size: 0.9rem; }
 .liens-fleches a:hover { color: var(--orange-texte); }
+.bloc .note { margin: 1rem 0 0; color: var(--attenue); font-size: 0.9rem; }
 
 /* ===== Pages de document (Jekyll) ===== */
 
@@ -348,21 +363,145 @@ a.carte:hover h3 { color: var(--orange-texte); }
 }
 .document li + li { margin-top: 0.3rem; }
 
-/* ===== Pied de page commun ===== */
+/* ===== Pied de page commun, comme celui de l'application ===== */
 
 .pied {
-  padding-block: 2.5rem 3rem;
-  color: var(--attenue);
-  font-size: 0.9rem;
+  overflow: hidden;
+  background: var(--papier-2);
+  padding: 0.75rem 1.25rem 0;
+  text-align: center;
 }
-.pied .conteneur { display: grid; gap: 1.5rem; }
+@media (min-width: 48rem) { .pied { padding: 0.875rem 3.5rem 0; } }
+@media (min-width: 64rem) { .pied { padding-inline: 2.5rem; } }
+
+/* Le bout de terrain, à l'échelle : 24 px par mètre au téléphone, 30 au-delà. */
+.terrain { position: relative; height: 259px; }
+.terrain > svg {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 576px;
+  max-width: none;
+  transform: translateX(-50%);
+  overflow: visible;
+}
+.terrain .neuf-metres { fill: none; stroke: var(--filet-fort); stroke-dasharray: 0.45 0.35; stroke-width: 0.09; }
+.terrain .zone { fill: color-mix(in srgb, var(--orange) 9%, transparent); stroke: var(--encre); stroke-opacity: 0.55; stroke-width: 0.1; }
+.terrain .ligne-de-but { fill: none; stroke: var(--filet-fort); stroke-width: 0.09; }
+.terrain .filet-du-but { fill: none; stroke: var(--orange); stroke-opacity: 0.45; stroke-width: 0.05; }
+.terrain .but { fill: none; stroke: var(--orange); stroke-linejoin: round; stroke-width: 0.16; }
+.terrain .marque-pied {
+  position: absolute;
+  top: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  white-space: nowrap;
+  font: 700 1.25rem/1 var(--serif);
+  letter-spacing: -0.025em;
+  color: var(--encre);
+  text-decoration: none;
+}
+.terrain .marque-pied em { font-style: normal; color: var(--orange); }
+.terrain .dans-la-zone {
+  position: absolute;
+  bottom: 2.5rem;
+  left: 50%;
+  width: 330px;
+  transform: translateX(-50%);
+}
 @media (min-width: 48rem) {
-  .pied .conteneur { grid-template-columns: 1.4fr 1fr; align-items: start; }
+  .terrain { height: 324px; }
+  .terrain > svg { width: 720px; }
+  .terrain .marque-pied { top: 43px; }
+  .terrain .dans-la-zone { bottom: 52px; width: 460px; }
 }
-.pied p { margin: 0 0 0.5rem; }
-.pied strong { color: var(--encre); font-family: var(--serif); font-size: 1.05rem; font-weight: 600; }
-.pied ul { display: flex; flex-wrap: wrap; gap: 0.25rem 1.25rem; margin: 0; padding: 0; list-style: none; }
-.pied .alerte { grid-column: 1 / -1; padding-top: 1.25rem; border-top: 1px solid var(--filet); }
+.dans-la-zone p { margin: 0; font: 600 15px/1.25 var(--serif); letter-spacing: -0.025em; color: var(--encre); }
+@media (min-width: 48rem) { .dans-la-zone p { font-size: 19px; } }
+.dans-la-zone ul {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.5rem 1.25rem;
+  margin: 0.5rem 0 0;
+  padding: 0;
+  list-style: none;
+  font-size: 13px;
+  line-height: 1.25rem;
+}
+@media (min-width: 48rem) { .dans-la-zone ul { margin-top: 0.75rem; } }
+.dans-la-zone a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  color: var(--encre);
+  font-weight: 500;
+  text-decoration: none;
+}
+.dans-la-zone a:hover { text-decoration: underline; }
+.dans-la-zone svg { width: 15px; height: 15px; flex-shrink: 0; color: var(--orange); }
+
+/* Sous la ligne de but : des lignes compactes, une seule rangée à partir de 1280 px. */
+.sous-la-ligne {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.875rem 0 1.25rem;
+  color: var(--attenue);
+  font-size: 13px;
+}
+.sous-la-ligne ul {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.25rem 0.875rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.sous-la-ligne a { color: var(--attenue); text-decoration: none; }
+.sous-la-ligne a:hover { color: var(--encre); text-decoration: underline; }
+.sous-la-ligne .copyright { margin: 0; font-size: 12px; line-height: 1.45; }
+.sous-la-ligne .copyright .tiret { display: none; }
+@media (min-width: 40rem) {
+  .sous-la-ligne .copyright { white-space: nowrap; }
+  .sous-la-ligne .copyright br { display: none; }
+  .sous-la-ligne .copyright .tiret { display: inline; }
+}
+@media (min-width: 80rem) {
+  .sous-la-ligne { display: grid; grid-template-columns: auto 1fr auto; gap: 1.5rem; padding: 1.125rem 0 1.375rem; }
+  .sous-la-ligne nav { grid-column: 2; grid-row: 1; }
+  .sous-la-ligne .copyright { grid-column: 1; grid-row: 1; text-align: left; }
+  .sous-la-ligne .theme { grid-column: 3; grid-row: 1; justify-self: end; }
+}
+
+.theme {
+  display: inline-flex;
+  gap: 3px;
+  padding: 3px;
+  border: 1px solid var(--filet-fort);
+  border-radius: 999px;
+}
+.theme button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.25rem;
+  height: 2rem;
+  padding: 0;
+  border: 0;
+  border-radius: 999px;
+  background: none;
+  color: var(--attenue);
+  cursor: pointer;
+}
+.theme button:hover { color: var(--encre); }
+.theme button[aria-pressed="true"] { background: var(--encre); color: var(--papier); }
+.theme svg { width: 1.1rem; height: 1.1rem; }
+@media (pointer: coarse) { .theme button { width: 2.75rem; height: 2.75rem; } }
 
 /* ===== Page introuvable ===== */
 
