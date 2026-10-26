@@ -315,6 +315,22 @@ a.carte:hover h3 { color: var(--orange-texte); }
 .document, .introuvable { border-bottom: 1px solid var(--filet); }
 .document { padding-block: 2.5rem 4rem; }
 .document .contenu { max-width: 46rem; }
+.fil { margin-bottom: 1.5rem; }
+.fil ol {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.25rem 0;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  color: var(--attenue);
+  font-size: 0.875rem;
+}
+.fil li + li::before { content: "/"; margin: 0 0.5rem; color: var(--filet-fort); }
+.fil a { color: var(--attenue); text-decoration: none; }
+.fil a:hover { color: var(--orange-texte); text-decoration: underline; }
+.fil [aria-current] { color: var(--encre); font-weight: 500; }
 .document .contenu > :first-child { margin-top: 0; }
 .document h1 { margin: 1rem 0 1.25rem; font-size: clamp(2rem, 6vw, 2.75rem); }
 .document h2 { margin: 2.5rem 0 0.75rem; font-size: 1.6rem; }
