@@ -5,58 +5,104 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Association PlaceAuxCoachs</title>
   <meta name="description" content="L'association loi 1901 qui porte PlaceAuxCoachs, le carnet d'entraînement gratuit des coachs de handball bénévoles.">
-  <link rel="icon" href="logo.png">
-  <link rel="stylesheet" href="style.css">
+  <meta name="theme-color" content="#EB5D21">
+  <link rel="icon" href="/logo.png">
+  <link rel="preload" href="/polices/fraunces-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/style.css">
 </head>
 <body>
-  <header class="entete">
-    <img src="logo.png" alt="" width="72" height="72">
-    <p class="kicker">Association loi 1901</p>
-    <h1>PlaceAuxCoachs</h1>
-    <p class="accroche">Le carnet d'entraînement des coachs de handball bénévoles.<br>Gratuit, sans publicité, fait par des coachs pour des coachs.</p>
-    <p><a class="bouton" href="https://placeauxcoachs.fr">Ouvrir l'application</a></p>
+  <header class="bandeau">
+    <div class="conteneur">
+      <a class="marque" href="/" aria-current="page"><img src="/logo.png" alt="" width="32" height="32">PlaceAuxCoachs</a>
+      <nav aria-label="Site de l'association">
+        <ul>
+          <li><a href="/association/">Association</a></li>
+          <li><a href="/produit/">Produit</a></li>
+          <li><a class="vers-appli" href="https://placeauxcoachs.fr">L'application</a></li>
+        </ul>
+      </nav>
+    </div>
   </header>
 
   <main>
-    <section>
-      <h2>Qui sommes-nous</h2>
-      <p>PlaceAuxCoachs est né dans un club de handball de Gironde et se développe sur du temps bénévole. L'association qui le porte a été constituée le 17 octobre 2026 et déclarée à la préfecture de la Gironde sous le numéro W332038379. Son siège est à Saint-Sulpice-et-Cameyrac.</p>
-      <p>Les évolutions se choisissent avec des référents du monde du handball, à partir de ce dont les entraîneurs ont besoin sur le terrain.</p>
+    <section class="une">
+      <svg class="etoile" aria-hidden="true" viewBox="0 0 120 120"><path fill="currentColor" d="M60 6 73.4 44.6 114 45.8 81.8 70.4 93.5 110 60 86 26.5 110 38.2 70.4 6 45.8 46.6 44.6Z"/></svg>
+      <div class="conteneur">
+        <p class="kicker">Association loi 1901 · Gironde</p>
+        <h1>Place aux <em>coachs</em>.</h1>
+        <p class="accroche">Nous portons PlaceAuxCoachs, le carnet d'entraînement des coachs de handball bénévoles. Fait par des coachs, pour des coachs.</p>
+        <div class="actions">
+          <a class="bouton" href="https://placeauxcoachs.fr">Ouvrir l'application
+            <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8l4 4-4 4M2 12h20"/></svg></a>
+          <small>Gratuit · Sans pub · Accès immédiat</small>
+        </div>
+      </div>
     </section>
 
-    <section class="cartes">
-      <a class="carte" href="association/">
-        <h2>Les documents de l'association</h2>
-        <p>Statuts, règlement intérieur, assemblées générales, finances et décisions du bureau, publiés dès leur adoption.</p>
-      </a>
-      <a class="carte" href="produit/">
-        <h2>La démarche produit</h2>
-        <p>Comment une idée devient une fonctionnalité, le guide pour exprimer un besoin et les études en cours.</p>
-      </a>
+    <section class="bloc">
+      <div class="conteneur">
+        <p class="kicker">Qui sommes-nous</p>
+        <h2>Né au bord d'un terrain, porté par des bénévoles.</h2>
+        <p>PlaceAuxCoachs est né dans un club de handball de Gironde. L'association le porte depuis le 17 octobre 2026 et choisit ses évolutions avec des référents du handball, à partir de ce que vivent les entraîneurs sur le terrain.</p>
+        <p class="faits">Déclarée en préfecture de la Gironde · RNA W332038379 · Siège à Saint-Sulpice-et-Cameyrac</p>
+      </div>
     </section>
 
-    <section>
-      <h2>Participer</h2>
-      <ul class="liens">
-        <li><a href="https://github.com/association-placeauxcoachs/produit/issues/new/choose">Proposer une idée ou signaler un bug</a></li>
-        <li><a href="https://github.com/orgs/association-placeauxcoachs/projects/2">Suivre les évolutions</a></li>
-        <li><a href="https://fr.tipeee.com/placeauxcoachs">Soutenir le projet sur Tipeee</a></li>
-        <li><a href="mailto:support@placeauxcoachs.fr">Nous écrire : support@placeauxcoachs.fr</a></li>
-      </ul>
+    <section class="bloc">
+      <div class="conteneur">
+        <p class="kicker">En toute transparence</p>
+        <h2>Tout se lit ici.</h2>
+        <div class="cartes">
+          <a class="carte" href="/association/">
+            <h3>Les documents de l'association</h3>
+            <p>Statuts, règlement intérieur, assemblées, finances et décisions du bureau, publiés dès leur adoption.</p>
+          </a>
+          <a class="carte" href="/produit/">
+            <h3>La démarche produit</h3>
+            <p>Comment une idée devient une fonctionnalité, le guide pour exprimer un besoin et les études en cours.</p>
+          </a>
+        </div>
+      </div>
     </section>
 
-    <section>
-      <h2>Nous suivre</h2>
-      <ul class="liens">
-        <li><a href="https://www.instagram.com/placeauxcoachs">Instagram</a></li>
-        <li><a href="https://www.youtube.com/@Placeauxcoachs">YouTube</a></li>
-        <li><a href="https://github.com/association-placeauxcoachs">GitHub</a></li>
-      </ul>
+    <section class="bloc">
+      <div class="conteneur">
+        <p class="kicker">Soutenir</p>
+        <h2>Gardons l'appli gratuite.</h2>
+        <div class="soutien">
+          <p>PlaceAuxCoachs reste gratuit et sans publicité. Pour soutenir l'association, le don en ligne ouvre bientôt sur HelloAsso.</p>
+          <span class="bientot">Bientôt sur HelloAsso</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="bloc">
+      <div class="conteneur">
+        <p class="kicker">Participer</p>
+        <h2>Votre terrain fait l'appli.</h2>
+        <ul class="liens-fleches">
+          <li><a href="https://github.com/association-placeauxcoachs/produit/issues/new/choose">Proposer une idée ou signaler un bug <span>GitHub</span></a></li>
+          <li><a href="https://github.com/orgs/association-placeauxcoachs/projects/2">Suivre les évolutions <span>Tableau public</span></a></li>
+          <li><a href="mailto:support@placeauxcoachs.fr">Nous écrire <span>support@placeauxcoachs.fr</span></a></li>
+        </ul>
+      </div>
     </section>
   </main>
 
-  <footer>
-    <p>Une faille de sécurité ? Écrivez à <a href="mailto:support@placeauxcoachs.fr">support@placeauxcoachs.fr</a> plutôt que d'ouvrir une issue publique.</p>
+  <footer class="pied">
+    <div class="conteneur">
+      <div>
+        <p><strong>Association PlaceAuxCoachs</strong></p>
+        <p>Loi 1901 · RNA W332038379 · Saint-Sulpice-et-Cameyrac (Gironde)</p>
+      </div>
+      <ul aria-label="Nous suivre">
+        <li><a href="https://www.instagram.com/placeauxcoachs">Instagram</a></li>
+        <li><a href="https://www.youtube.com/@Placeauxcoachs">YouTube</a></li>
+        <li><a href="https://github.com/association-placeauxcoachs">GitHub</a></li>
+        <li><a href="mailto:support@placeauxcoachs.fr">Contact</a></li>
+      </ul>
+      <p class="alerte">Une faille de sécurité ? Écrivez à <a href="mailto:support@placeauxcoachs.fr">support@placeauxcoachs.fr</a> plutôt que d'ouvrir une issue publique.</p>
+    </div>
   </footer>
 </body>
 </html>
