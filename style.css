@@ -306,7 +306,7 @@ a.carte:hover h3 { color: var(--orange-texte); }
   font-weight: 500;
   text-decoration: none;
 }
-.liens-fleches a span { color: var(--attenue); font-weight: 400; font-size: 0.9rem; }
+.liens-fleches a span { color: var(--attenue); font-weight: 400; font-size: 0.9rem; white-space: nowrap; }
 .liens-fleches a:hover { color: var(--orange-texte); }
 .bloc .note { margin: 1rem 0 0; color: var(--attenue); font-size: 0.9rem; }
 
