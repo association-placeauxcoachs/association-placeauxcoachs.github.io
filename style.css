@@ -388,6 +388,68 @@ a.carte:hover h3 { color: var(--orange-texte); }
 .document .etudes-en-avant .carte h3 { margin: 0 0 0.4rem; font-size: 1.15rem; }
 .document .etudes-en-avant .toutes { margin-top: 1.5rem; font-weight: 500; }
 
+/* Schéma de la démarche produit : étapes fléchées, regroupées par dépôt.
+   En colonne sur téléphone, en ligne à partir de 48rem. */
+.parcours { display: grid; gap: 2.25rem; margin: 2rem 0 2.5rem; }
+.parcours-zone { display: flex; flex-direction: column; padding: 0.9rem 1rem 1.1rem; border: 1px dashed var(--filet-fort); }
+.parcours-lieu {
+  margin: 0 0 0.8rem;
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--orange-texte);
+}
+.parcours-zone.code .parcours-lieu { color: var(--violet); }
+.parcours ol { display: grid; gap: 1.75rem; margin: 0; padding: 0; list-style: none; counter-reset: etape; }
+.parcours ol[start="4"] { counter-reset: etape 3; }
+.parcours li {
+  position: relative;
+  margin: 0;
+  padding: 0.7rem 0.8rem 0.75rem;
+  background: var(--surface);
+  border-left: 3px solid var(--orange);
+  box-shadow: 4px 4px 0 -1px var(--peche);
+  counter-increment: etape;
+}
+.parcours-zone.code li { border-left-color: var(--violet); box-shadow: 4px 4px 0 -1px color-mix(in srgb, var(--violet) 35%, transparent); }
+.parcours li::before {
+  content: counter(etape, decimal-leading-zero);
+  display: block;
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  color: var(--attenue);
+}
+.parcours li strong { display: block; font-family: var(--serif); font-size: 1.1rem; font-weight: 600; line-height: 1.2; }
+.parcours li span { display: block; margin-top: 0.25rem; font-size: 0.85rem; line-height: 1.35; color: var(--attenue); }
+.parcours li::after,
+.parcours-zone:first-child li:last-child::after {
+  content: "↓";
+  position: absolute;
+  left: 50%;
+  bottom: -0.875rem;
+  transform: translate(-50%, 50%);
+  font-size: 1.1rem;
+  line-height: 1;
+  color: var(--orange-texte);
+}
+.parcours-zone:first-child li:last-child::after { bottom: -2.25rem; }
+.parcours-zone.code li:last-child::after { content: none; }
+@media (min-width: 48rem) {
+  .parcours { width: min(56rem, calc(100vw - 3.5rem)); grid-template-columns: 3fr 2fr; gap: 1.75rem; }
+  .parcours ol { grid-auto-flow: column; grid-auto-columns: 1fr; flex: 1; gap: 1.5rem; }
+  .parcours li::after,
+  .parcours-zone:first-child li:last-child::after {
+    content: "→";
+    left: auto;
+    right: -0.75rem;
+    bottom: auto;
+    top: 50%;
+    transform: translate(50%, -50%);
+  }
+  .parcours-zone:first-child li:last-child::after { right: -1.9rem; }
+}
+
 /* ===== Pied de page commun, comme celui de l'application ===== */
 
 .pied {
